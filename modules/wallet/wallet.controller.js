@@ -1,5 +1,7 @@
 const Wallet = require('mongoose').model('Wallet');
-const { sendSuccessResponse } = require('../../utils/response');
+const { sendSuccessResponse, sendWrongInputResponse, sendErrorResponse } = require('../../utils/response');
+const { getWalletById } = require('./wallet.util');
+const { isValidObjectId } = require('./../../utils/utils');
 
 const createWallet = async (req, res, next) => {
     try {
@@ -14,18 +16,25 @@ const createWallet = async (req, res, next) => {
     }
 }
 
-const transactWallet = async (walletId, amount, session) => {
+
+const getWallet = async (req, res, next) => {
     try {
-        const wallet = await Wallet.findByIdAndUpdate(walletId, {
-            $inc: { balance: +(amount) }
-        }, { new: true, session });
-        return wallet;
+        const { walletId } = req.params;
+        if (!isValidObjectId(walletId)) {
+            return sendWrongInputResponse(req, res, "Invalid Wallet Id");
+        }
+
+        const wallet = await getWalletById(walletId);
+        if (!wallet) {
+            return sendErrorResponse(req, res, 404, "Wallet not found", `Wallet Id ${walletId} not found`);
+        }
+        return sendSuccessResponse(req, res, wallet);
     } catch (e) {
-        throw e;
+        next(e);
     }
 }
 
 module.exports = {
     createWallet,
-    transactWallet
+    getWallet
 }

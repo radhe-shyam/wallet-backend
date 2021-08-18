@@ -12,6 +12,8 @@
   </a>
 </p>
 
+### 🏠 [Homepage](https://wallet--backend.herokuapp.com/api/health)
+
 ## Setup Process
 
 1. Install
@@ -45,6 +47,7 @@
 ---
 
 ## API Documentation
+##### NOTE - The server will be down after every half an hour of inactivity. A new activity will take at least 10 seconds to warm up the server. Please keep the server warm before testing.
 
 1. **To setup new wallet**
 
@@ -59,7 +62,7 @@
 
    ```http
    POST /api/wallet/setup HTTP/1.1
-   Host: localhost:5000
+   Host: https://wallet--backend.herokuapp.com
    Content-Type: application/json
 
     {
@@ -97,7 +100,7 @@
 
    ```http
    POST /api/transact/611a5dff0d9b950b449d6df7 HTTP/1.1
-   Host: localhost:5000
+   Host: https://wallet--backend.herokuapp.com
    Content-Type: application/json
 
    {
@@ -130,7 +133,7 @@
 
    ```http
    GET /api/wallet/611a5dff0d9b950b449d6df7 HTTP/1.1
-   Host: localhost:5000
+   Host: https://wallet--backend.herokuapp.com
    ```
 
    **Response:**
@@ -163,7 +166,7 @@
 
    ```http
    GET /api/transactions?walletId=611a5dff0d9b950b449d6df7&skip=1&limit=2 HTTP/1.1
-   Host: localhost:5000
+   Host: https://wallet--backend.herokuapp.com
    ```
 
    **Response:**
@@ -210,7 +213,7 @@
 
    ```http
    GET /api/transactions/all/611a5dff0d9b950b449d6df7 HTTP/1.1
-   Host: localhost:5000
+   Host: https://wallet--backend.herokuapp.com
    ```
 
    **Response:**

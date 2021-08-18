@@ -44,4 +44,8 @@ const transaction = new Schema({
     }
 });
 
+transaction.index({
+    walletId: 1
+});
+
 mongoose.model('Transaction', transaction);
