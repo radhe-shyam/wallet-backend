@@ -1,3 +1,5 @@
+const { isProd } = require('./utils');
+
 /**
  * 
  * @param {Object} req 
@@ -26,7 +28,7 @@ const sendErrorResponse = (req, res, statusCode = 500, prettyMsg, error) => {
         status: 0,
         prettyMsg,
         errorMessage: error.toString(),
-        error: error.stack
+        error: isProd() ? '' : error.stack
     });
 }
 
