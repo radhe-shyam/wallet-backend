@@ -12,7 +12,8 @@
   </a>
 </p>
 
-### 🏠 [Homepage](https://wallet--backend.herokuapp.com/api/health)
+### 🏠 [Homepage - API](https://wallet--backend.herokuapp.com/api/health)
+### 🏠 [Homepage - APP](https://radhe-shyam.github.io/wallet-frontend/)
 
 ## Setup Process
 
